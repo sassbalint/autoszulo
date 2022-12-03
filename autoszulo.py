@@ -16,8 +16,6 @@ from selenium.webdriver.support import expected_conditions as EC
 PYTHONWAIT = 0.2
 SELENIUMWAIT = 2
 
-NUMBER_OF_FILLS = 3
-
 URL = 'https://szuloikerdoiv1.unipoll.hu/PagesForResponse/normalsurvey/response?surveyid=20124780'
 
 START_BUTTON =     "//button[@class='mat-ripple mat-tooltip-trigger start-btn']"
@@ -66,10 +64,10 @@ def fill_in():
     browser.get(URL)
     time.sleep(PYTHONWAIT)
 
-    # go to page #1
+    # go to page#1
     click(START_BUTTON)
 
-    # go to page page #6
+    # go to page#6
     for i in range(5): next_page()
 
     # write in text
@@ -77,7 +75,7 @@ def fill_in():
     text_answer.send_keys(TEXT)
     time.sleep(PYTHONWAIT)
 
-    # go to page #7
+    # go to page#7
     next_page(click_somewhere=False)
 
     # submit data
