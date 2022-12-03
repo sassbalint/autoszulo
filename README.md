@@ -24,6 +24,6 @@ python3 autoszulo.py -n 4
 
 ## rendszerkövetelmények
 
-Firefox szükséges hozzá.
+Python3 szükséges hozzá meg Firefox.
 Tesztelve: ubuntu 18.04-en.
 Biztos megy windows-on is valahogy.
