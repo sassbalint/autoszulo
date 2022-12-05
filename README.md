@@ -6,7 +6,7 @@ Segítség azoknak a szülőknek, akik összes gyermekük tekintetében egy gomb
 
 ### előkészítés
 
-1. [Töltse le az `autoszulo.py` programot](https://raw.githubusercontent.com/sassbalint/autoszulo/main/autoszulo.py) (jobbgomb + "Hivatkozás mentése más néven...")...
+1. [Töltse le az `autoszulo.py` programot](https://raw.githubusercontent.com/sassbalint/autoszulo/main/autoszulo.py) :arrow_left: ide katt jobbgomb + "Hivatkozás mentése más néven..."...
 2. ...és mentse el az Asztalra `autoszulo.py` néven, a "Fájl típusa" legyen "Minden fájl".
 3. A Startmenü "Keresés" mezőjébe írja be: `cmd`, majd kattintson a megjelenő "Parancssor" alkalmazásra.
 4. A megjelenő fekete ablakba írja be: `cd Desktop` + Enter.
