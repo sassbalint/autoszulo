@@ -4,6 +4,7 @@ A module to fill in a certain online form automatically.
 
 import argparse
 import time
+import sys
 
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service
@@ -12,6 +13,8 @@ from selenium.webdriver.common.by import By
 
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
+from tkinter import simpledialog
 
 PYTHONWAIT = 0.2
 SELENIUMWAIT = 2
@@ -89,7 +92,10 @@ def fill_in():
 
 def main():
     args = get_args()
-    for i in range(args.number_of_fills):
+    number_of_fills = args.number_of_fills
+    if getattr(sys, 'frozen', False):  # if we are running under PyInstaller
+        number_of_fills = simpledialog.askinteger("Gyerekek száma", "Hány gyerekre töltse ki a program a kérdőívet?")
+    for i in range(number_of_fills):
         fill_in()
 
 
