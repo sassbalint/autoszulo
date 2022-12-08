@@ -1,9 +1,10 @@
 name: Python application
 
-on: [push, pull_request]
+on: [push]
 
 permissions:
-  contents: read
+  contents: write
+  packages: write
 
 jobs:
   build:
@@ -28,3 +29,9 @@ jobs:
       with:
         name: autoszulo
         path: dist/autoszulo.exe
+    - name: Create release
+      uses: marvinpinto/action-automatic-releases@v1.2.1
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN  }}
+        files: dist/autoszulo.exe
+        automatic_release_tag: latest
