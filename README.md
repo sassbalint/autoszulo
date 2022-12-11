@@ -5,29 +5,28 @@ Segítség azoknak a szülőknek, akik összes gyermekük tekintetében egy gomb
 ## > windows <
 
 ### előkészítés
-
-1. [Töltse le az `autoszulo.py` programot](https://raw.githubusercontent.com/sassbalint/autoszulo/main/autoszulo.py) :arrow_left: ide katt jobbgomb + "Hivatkozás mentése más néven..."...
-2. ...és mentse el az Asztalra `autoszulo.py` néven, a "Fájl típusa" legyen "Minden fájl".
-3. A Startmenü "Keresés" mezőjébe írja be: `cmd`, majd kattintson a megjelenő "Parancssor" alkalmazásra.
-4. A megjelenő fekete ablakba írja be: `cd Desktop` + Enter.
-5. Írja be: `autoszulo.py` + Enter.
-6. A megjelenő ablakban válassza az "Alkalmazás keresése a Microsoft Store-ben" lehetőséget + OK. Ha nem jelenik meg ilyen ablak, akkor folytassa a 8. pontnál.
-7. Katt a "Python 3.10"-re + jobb fent katt a "Beszerzés"-re, várja meg míg települ a Python.
-8. Térjen vissza a `cmd` ablakába és írja be: `pip install selenium webdriver_manager` + Enter, várja meg míg lefut a szükséges kiegészítő modulok telepítése.
+[Töltse le az `autoszulo.exe` programot](https://github.com/sassbalint/autoszulo/releases/download/latest/autoszulo.exe) :arrow_left: ide kattintva.
 
 ### használat
-Írja be a `cmd` ablakába: `python3 autoszulo.py` + Enter.
+Kattintson a letöltött `autoszulo.exe` programra.
+Ha azt az üzenetett kapja, hogy
+"A Windows megvédte a számítógépét" vagy hasonlót,
+akkor kattintson a "További információ"-ra,
+majd a "Futtatás mindenképpen"-re.
 
-Néhány másodpercen belül elkezd működni a dolog :tada:, a képernyőn láthatjuk, hogy hogyan tölti ki a rendszer a kérdőívet.
-A program alapból három gyermekre tölti ki a kérdőívet, a kitöltések között néhány másodperc szünet van.
+Ekkor a program megkérdezi,
+hogy hány gyermekre töltse ki a kérdőívet.
+Ha nem ad meg semmit, akkor alapból 3 gyermekre fogja kitölteni.
+Utána a program bekéri azt a linket,
+amit a Krétában kapott a kérdőívhez.
+Ha ezt nem adja meg, akkor a
+[`444.hu` oldalán közzétett linket](https://444.hu/2022/12/02/atneztuk-a-belugy-szuloi-elegedettseg-kerdoivet-nem-vagyunk-elegedettek) fogja használni.
 
-Ha Önnek esetleg ettől eltérő számú gyermeke van, akkor a gyermekek számát az `-n` kapcsolóval adhatja meg:
-Négy gyermek esetén például ezt írja be a `cmd` ablakába: `python3 autoszulo.py -n 4` + Enter.
+Az "OK" megnyomását követő néhány másodpercen belül elkezd működni a dolog :tada:, a képernyőn láthatjuk, hogy hogyan tölti ki a rendszer a kérdőívet.
 
 ### rendszerkövetelmények
 
-Firefox szükséges hozzá. Meg Python, de azt a fentiek során telepítjük, ha esetleg nem lenne.
-Tesztelve: Windows 11 Pro-n.
+Firefox szükséges hozzá. Tesztelve: Windows 11 Pro-n.
 
 ## > linux <
 
@@ -42,11 +41,16 @@ pip install -r requirements.txt
 ### használat
 
 ```python
-python3 autoszulo.py
+python3 autoszulo.py -l "LINK"
 ```
 
+A `LINK` helyén azt a linket szükséges megadni,
+amit a Krétában kapott a kérdőívhez.
+Ha ezt nem adja meg, akkor a
+[`444.hu` oldalán közzétett linket](https://444.hu/2022/12/02/atneztuk-a-belugy-szuloi-elegedettseg-kerdoivet-nem-vagyunk-elegedettek) fogja használni a program.
+
 A program alapból három gyermekre tölti ki a kérdőívet.
-Ha Önnek esetleg ettől eltérő számú gyermeke van, akkor a gyermekek számát megadhatja a `-n` kapcsolóval.
+Ha ettől eltérő számú gyermekre szeretné kitölteni, akkor a gyermekek számát megadhatja a `-n` kapcsolóval.
 Például négy gyermek esetén:
 
 ```python

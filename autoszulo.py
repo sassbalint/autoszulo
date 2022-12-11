@@ -19,7 +19,8 @@ from tkinter import simpledialog
 PYTHONWAIT = 0.2
 SELENIUMWAIT = 2
 
-URL = 'https://szuloikerdoiv1.unipoll.hu/PagesForResponse/normalsurvey/response?surveyid=20124780'
+DEFAULT_NUMBER_OF_FILLS = 3
+DEFAULT_LINK = 'https://szuloikerdoiv1.unipoll.hu/PagesForResponse/normalsurvey/response?surveyid=20124780'
 
 START_BUTTON =     "//button[@class='mat-ripple mat-tooltip-trigger start-btn']"
 EXIT_BUTTON =      "//button[@class='mat-ripple header__btn header__btn--exit ng-star-inserted']"
@@ -40,7 +41,7 @@ TEXT = """1. Érdemi és nyilvános párbeszédet az oktatás megújításáról
     9. Szakmai szabadságot és támogatást az oktatásban! Korszerű nemzeti alaptantervet! Szabad tankönyvválasztást!"""
 
 
-def fill_in():
+def fill_in(url):
     """Fill in a certain online form automatically."""
 
 
@@ -64,7 +65,7 @@ def fill_in():
     time.sleep(PYTHONWAIT)
 
     # home page
-    browser.get(URL)
+    browser.get(url)
     time.sleep(PYTHONWAIT)
 
     # go to page#1
@@ -90,13 +91,27 @@ def fill_in():
     browser.quit()
 
 
+def format_url(url):
+    """Convert `url` to canonical format."""
+    return url.replace('Survey.aspx?SurveyId',
+        'PagesForResponse/normalsurvey/response?surveyid')
+
+
 def main():
+    """Main."""
     args = get_args()
+
     number_of_fills = args.number_of_fills
+    url = args.link
+
     if getattr(sys, 'frozen', False):  # if we are running under PyInstaller
-        number_of_fills = simpledialog.askinteger("Gyerekek száma", "Hány gyerekre töltse ki a program a kérdőívet?")
+        number_of_fills = simpledialog.askinteger("Gyermekek száma", "Hány gyermekre töltse ki a program a kérdőívet?")
+        url = simpledialog.askstring("Kérdőív link", "Adja meg a linket, amit a Krétában kapott a kérdőívhez:")
+
+    url = format_url(url)
+
     for i in range(number_of_fills):
-        fill_in()
+        fill_in(url)
 
 
 def get_args():
@@ -109,9 +124,14 @@ def get_args():
         '-n', '--number-of-fills',
         help='Fill in the form this much times.',
         type=int,
-        default='3'
+        default=DEFAULT_NUMBER_OF_FILLS
     )
-
+    parser.add_argument(
+        '-l', '--link',
+        help='Use this URL to access the form.',
+        type=str,
+        default=DEFAULT_LINK
+    )
     return parser.parse_args()
 
 
