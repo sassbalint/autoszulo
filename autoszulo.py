@@ -105,8 +105,21 @@ def main():
     url = args.link
 
     if getattr(sys, 'frozen', False):  # if we are running under PyInstaller
-        number_of_fills = simpledialog.askinteger("Gyermekek száma", "Hány gyermekre töltse ki a program a kérdőívet?")
-        url = simpledialog.askstring("Kérdőív link", "Adja meg a linket, amit a Krétában kapott a kérdőívhez:")
+
+        number_of_fills_input = simpledialog.askstring(
+            "Gyermekek száma",
+            "Hány gyermekre töltse ki a program a kérdőívet?",
+            initialvalue=DEFAULT_NUMBER_OF_FILLS)
+        try:
+            number_of_fills = int(number_of_fills_input)
+        except ValueError:
+            number_of_fills = DEFAULT_NUMBER_OF_FILLS
+
+        url_input = simpledialog.askstring(
+            "Kérdőív link",
+            "Adja meg a linket, amit a Krétában kapott a kérdőívhez:",
+            initialvalue=DEFAULT_LINK)
+        url = url_input if url_input else DEFAULT_LINK
 
     url = format_url(url)
 
