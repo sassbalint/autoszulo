@@ -93,8 +93,11 @@ def fill_in(url):
 
 def format_url(url):
     """Convert `url` to canonical format."""
-    return url.replace('Survey.aspx?SurveyId',
+    url = url.replace('Survey.aspx?SurveyId',
         'PagesForResponse/normalsurvey/response?surveyid')
+    if not url.startswith('https://'):
+        url = 'https://' + url
+    return url
 
 
 def main():
